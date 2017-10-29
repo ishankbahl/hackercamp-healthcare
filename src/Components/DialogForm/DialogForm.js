@@ -45,12 +45,12 @@ class DialogForm extends Component{
             if(f1 || f2 || f3 || f4){
                 console.log([f1, f2, f3, f4]);
                 console.log(train([3.5,232,134,23]));
-                saveReports({
+                saveReports(JSON.stringify({
                     resultuno: f1,
                     resultdeus: f2,
                     resultres: f3,
                     resultqutro: f4,
-                });
+                }));
             }
         }
         this.handleRequestClose();
