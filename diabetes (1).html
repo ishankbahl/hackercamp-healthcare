@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>chart</title>
+  </head>
+  <body>
+    <canvas id="myChart"></canvas>
+    <canvas id="myChart2"></canvas>
+  </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var ctx2 = document.getElementById('myChart2').getContext('2d');
+var myLineChart = new Chart(ctx, {
+  // The type of chart we want to create
+  type: 'line',
+
+  // The data for our dataset
+  data: {
+      labels: ["January", "February", "March", "April", "May", "June", "July","Aug","Sept","Oct","Nov","Dec"],
+      datasets: [{
+          label: "Insulin Level",
+          borderColor: 'rgb(0, 0, 0)',
+          data: [100,
+          200,
+          150,
+          100,
+          60,
+          100,
+          150,
+          70,
+          120,
+          100,
+          300,
+          60] ,
+          options: {
+scales: {
+    yAxes: [{
+        stacked: true
+    }]
+}
+}}]
+  }
+
+});
+var myPieChart = new Chart(ctx2, {
+    type: 'pie',
+    data: {
+      labels: ["<100", "<200", "<300"],
+      datasets: [{
+        label: "Insulin",
+        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f"],
+        data: [4,7,1]
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Insulin Frequency'
+      }
+    }
+});
+</script>
+</html>
