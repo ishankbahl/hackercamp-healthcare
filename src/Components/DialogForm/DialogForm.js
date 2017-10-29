@@ -8,6 +8,9 @@ import Button from 'material-ui/Button';
 import TextField from 'material-ui/TextField';
 import { withStyles } from "material-ui/styles";
 
+import train from "../../cardio2";
+import { saveReports } from "../../utils.js";
+
 class DialogForm extends Component{
     
     constructor(props) {
@@ -32,11 +35,23 @@ class DialogForm extends Component{
     }
 
     save() {
-        if (this.props.fields == "Diabetes"){
+
+        const { f1, f2, f3, f4 } = this.state;
+
+        if (this.props.fields[0][0] === "Diabetes"){
 
         }
-        else if (this.props.fields == "Cardio Vascular"){
-            
+        else if (this.props.fields[0][0] === "Cardio Vascular"){
+            if(f1 || f2 || f3 || f4){
+                console.log([f1, f2, f3, f4]);
+                console.log(train([3.5,232,134,23]));
+                saveReports({
+                    resultuno: f1,
+                    resultdeus: f2,
+                    resultres: f3,
+                    resultqutro: f4,
+                });
+            }
         }
         this.handleRequestClose();
 
@@ -52,10 +67,10 @@ class DialogForm extends Component{
                 this.setState({ f2: e.target.value});
                 return;
             case 2:
-                this.setState({ f4: e.target.value });
+                this.setState({ f3: e.target.value });
                 return;
             case 3:
-                this.setState({ f5: e.target.value });
+                this.setState({ f4: e.target.value });
                 return;
             default:
                 return;
